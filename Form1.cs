@@ -51,6 +51,7 @@ namespace RemoteShutdownPC
                     }
                     else
                     {//Without timer shutdown sending 1 milisecond
+                        firebase.UpdateData(list.Name, false, list.Timer, list.Cancel);
                         await sendToCMD(1);
                         //Console.WriteLine("Shutdown");
                     }
