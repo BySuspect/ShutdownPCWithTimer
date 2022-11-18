@@ -35,6 +35,13 @@ namespace RemoteShutdownPC
             {
                 Thread.Sleep(49);//Minimum CPU usage
                 var list = await firebase.GetData("Shutdown");//Requesting data from firebase
+
+                if (list == null)//If database is empty
+                {
+                    await firebase.AddData("Shutdown");
+                    continue;
+                }
+
                 if (list.Shutdown)
                 {
                     if (list.Timer != "0")//If shutdowning with timer
