@@ -46,8 +46,9 @@ namespace RemoteShutdownPC
                 {
                     if (list.Timer != "0")//If shutdowning with timer
                     {
+
+                        await firebase.UpdateData(list.Name, false, "0", list.Cancel);
                         await sendToCMD(Convert.ToInt32(list.Timer));
-                        firebase.UpdateData(list.Name, false, "0", list.Cancel);
                     }
                     else
                     {

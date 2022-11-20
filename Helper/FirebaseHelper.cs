@@ -54,7 +54,7 @@ namespace RemoteShutdownPC.Helper
         }
 
         //Update data on firebase
-        public async void UpdateData(string name, bool shutdown, string timer, bool cancel)
+        public async Task UpdateData(string name, bool shutdown, string timer, bool cancel)
         {
             try
             {
