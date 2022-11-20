@@ -47,13 +47,13 @@ namespace RemoteShutdownPC
                     if (list.Timer != "0")//If shutdowning with timer
                     {
 
-                        await firebase.UpdateData(list.Name, false, "0", list.Cancel);
+                        _ = firebase.UpdateData(list.Name, false, "0", list.Cancel);
                         await sendToCMD(Convert.ToInt32(list.Timer));
                     }
                     else
                     {
                         //Without timer shutdown sending 1 milisecond
-                        firebase.UpdateData(list.Name, false, list.Timer, list.Cancel);
+                        await firebase.UpdateData(list.Name, false, list.Timer, list.Cancel);
                         await sendToCMD(1);
                     }
                 }
@@ -61,7 +61,7 @@ namespace RemoteShutdownPC
                 if (list.Cancel)//if cancel is true 
                 {
                     await cancelShutdown();
-                    firebase.UpdateData(list.Name, list.Shutdown, "0", false);
+                    _ = firebase.UpdateData(list.Name, list.Shutdown, "0", false);
                 }
             }
         }
